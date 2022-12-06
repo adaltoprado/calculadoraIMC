@@ -15,19 +15,19 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: calculadoraIMC(),
+      home: const CalculadoraIMC(),
     );
   }
 }
 
-class calculadoraIMC extends StatefulWidget {
-  const calculadoraIMC({super.key});
+class CalculadoraIMC extends StatefulWidget {
+  const CalculadoraIMC({super.key});
 
   @override
-  State<calculadoraIMC> createState() => _calculadoraIMCState();
+  State<CalculadoraIMC> createState() => _CalculadoraIMCState();
 }
 
-class _calculadoraIMCState extends State<calculadoraIMC> {
+class _CalculadoraIMCState extends State<CalculadoraIMC> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +61,59 @@ class _calculadoraIMCState extends State<calculadoraIMC> {
                     style: TextStyle(fontSize: 20, color: Colors.green),
                   ),
                 ],
+              ),
+            ),
+            SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Text('Seu peso'),
+                    Container(
+                      width: 75,
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            suffixText: 'Kg'),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(width: 22),
+                Column(
+                  children: [
+                    Text('Sua altura'),
+                    Container(
+                      width: 75,
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            suffixText: 'M'),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 22),
+            Container(
+              width: 200,
+              height: 60,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'Calcular',
+                  style: TextStyle(
+                    color: Colors.white,
+                    //shape: RoundedRectangleBorder(
+                    //borderRadius: BorderRadius.circular(18),
+                  ),
+                ),
               ),
             ),
           ],
