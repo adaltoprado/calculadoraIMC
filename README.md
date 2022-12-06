@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # calculadora_imc
 
 A new Flutter project.
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# calculadoraIMC
+Calculadora de Índice de Massa Corporal
+>>>>>>> 942fbec70b14e7e07a7b566bdb646b5de87d4c04
