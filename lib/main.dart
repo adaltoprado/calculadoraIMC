@@ -110,8 +110,6 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                   'Calcular',
                   style: TextStyle(
                     color: Colors.white,
-                    //shape: RoundedRectangleBorder(
-                    //borderRadius: BorderRadius.circular(18),
                   ),
                 ),
               ),
