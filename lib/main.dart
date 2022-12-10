@@ -28,6 +28,9 @@ class CalculadoraIMC extends StatefulWidget {
 }
 
 class _CalculadoraIMCState extends State<CalculadoraIMC> {
+  TextEditingController pesoController = TextEditingController(text: '');
+  TextEditingController alturaController = TextEditingController(text: '');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,14 +73,18 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                 Column(
                   children: [
                     Text('Seu peso'),
+                    SizedBox(height: 6),
                     Container(
                       width: 75,
                       child: TextField(
+                        controller: pesoController,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            suffixText: 'Kg'),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          suffixText: 'Kg',
+                        ),
+                        keyboardType: TextInputType.number,
                       ),
                     ),
                   ],
@@ -86,14 +93,18 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                 Column(
                   children: [
                     Text('Sua altura'),
+                    SizedBox(height: 6),
                     Container(
                       width: 75,
                       child: TextField(
+                        controller: alturaController,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            suffixText: 'M'),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          suffixText: 'M',
+                        ),
+                        keyboardType: TextInputType.number,
                       ),
                     ),
                   ],
