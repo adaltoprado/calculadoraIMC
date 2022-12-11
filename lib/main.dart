@@ -33,7 +33,7 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
 
   double? imc;
   late String classificacao;
-  //Color corResultado;
+  late Color corResultado;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                       borderRadius: BorderRadius.circular(150),
                       border: Border.all(
                         width: 10,
-                        color: Colors.green,
+                        color: corResultado,
                       ),
                     ),
                     child: Column(
@@ -70,12 +70,12 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                       children: [
                         Text(
                           '${imc?.toStringAsFixed(2)}',
-                          style: TextStyle(fontSize: 42, color: Colors.green),
+                          style: TextStyle(fontSize: 42, color: corResultado),
                         ),
                         SizedBox(height: 12),
                         Text(
                           classificacao,
-                          style: TextStyle(fontSize: 20, color: Colors.green),
+                          style: TextStyle(fontSize: 20, color: corResultado),
                         ),
                       ],
                     ),
@@ -140,6 +140,7 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                   setState(() {
                     imc = peso / (altura * altura);
                     classificacao = getClassificacaoIMC(imc!);
+                    corResultado = getCorIMC(imc!);
                   });
                   print(imc);
                   print(alturaController.text);
@@ -179,6 +180,23 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
       return 'Obesidade Grau II';
     } else if (imc >= 40) {
       return 'Obesidade Extrema';
+    }
+    throw '';
+  }
+
+  Color getCorIMC(double imc) {
+    if (imc <= 18.5) {
+      return Colors.blue;
+    } else if (imc > 18.5 && imc <= 24.9) {
+      return Colors.green;
+    } else if (imc >= 25 && imc <= 29.9) {
+      return Colors.yellow;
+    } else if (imc > 30 && imc <= 34.9) {
+      return Colors.orange;
+    } else if (imc >= 35 && imc <= 39.9) {
+      return Colors.red;
+    } else if (imc >= 40) {
+      return Colors.redAccent;
     }
     throw '';
   }
