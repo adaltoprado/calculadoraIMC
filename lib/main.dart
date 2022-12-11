@@ -32,7 +32,7 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
   TextEditingController alturaController = TextEditingController(text: '');
 
   double? imc;
-  //String classificacao;
+  late String classificacao;
   //Color corResultado;
 
   @override
@@ -67,14 +67,14 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          '24.22',
+                          '${imc?.toStringAsFixed(2)}',
                           style: TextStyle(fontSize: 42, color: Colors.green),
                         ),
                         SizedBox(height: 12),
                         Text(
-                          'Peso Normal',
+                          classificacao,
                           style: TextStyle(fontSize: 20, color: Colors.green),
                         ),
                       ],
@@ -135,7 +135,13 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  print(pesoController.text);
+                  double peso = double.parse(pesoController.text);
+                  double altura = double.parse(alturaController.text);
+                  setState(() {
+                    imc = peso / (altura * altura);
+                    classificacao = getClassificacaoIMC(imc!);
+                  });
+                  print(imc);
                   print(alturaController.text);
                 },
                 child: Text(
@@ -158,5 +164,22 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
         ),
       ),
     );
+  }
+
+  String getClassificacaoIMC(double imc) {
+    if (imc <= 18.5) {
+      return 'Abaixo do Peso';
+    } else if (imc > 18.5 && imc <= 24.9) {
+      return 'Eutrofia (Peso Adequado)';
+    } else if (imc >= 25 && imc <= 29.9) {
+      return 'Você está com Sobrepeso';
+    } else if (imc > 30 && imc <= 34.9) {
+      return 'Você está com Obesidade Grau I';
+    } else if (imc >= 35 && imc <= 39.9) {
+      return 'Você está com Obesidade Grau II';
+    } else if (imc >= 40) {
+      return 'Você está com Obesidade Extrema';
+    }
+    throw '';
   }
 }
