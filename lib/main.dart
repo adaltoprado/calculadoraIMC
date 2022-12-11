@@ -135,15 +135,24 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  double peso = double.parse(pesoController.text);
-                  double altura = double.parse(alturaController.text);
-                  setState(() {
-                    imc = peso / (altura * altura);
-                    classificacao = getClassificacaoIMC(imc!);
-                    corResultado = getCorIMC(imc!);
-                  });
-                  print(imc);
-                  print(alturaController.text);
+                  try {
+                    double peso = double.parse(pesoController.text);
+                    double altura = double.parse(alturaController.text);
+                    setState(() {
+                      imc = peso / (altura * altura);
+                      classificacao = getClassificacaoIMC(imc!);
+                      corResultado = getCorIMC(imc!);
+                    });
+                  } on Exception {
+                    setState(() {
+                      imc = null;
+                      pesoController.text = '';
+                      alturaController.text = '';
+                      classificacao = '';
+                      String corResultado = '';
+                    });
+                    print('Digite valores válidos!');
+                  }
                 },
                 child: Text(
                   'Calcular',
@@ -190,7 +199,7 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
     } else if (imc > 18.5 && imc <= 24.9) {
       return Colors.green;
     } else if (imc >= 25 && imc <= 29.9) {
-      return Colors.yellow;
+      return Colors.yellowAccent;
     } else if (imc > 30 && imc <= 34.9) {
       return Colors.orange;
     } else if (imc >= 35 && imc <= 39.9) {
