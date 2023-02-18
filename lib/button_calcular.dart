@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/cupertino.dart';
 
 class ButtonCalcularIMC extends StatelessWidget {
-  ButtonCalcularIMC({required this.onPressed});
+  const ButtonCalcularIMC({super.key, required this.onPressed});
 
   final Function onPressed;
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 200,
       height: 60,
       child: ElevatedButton(
         onPressed: () {
           onPressed();
         },
-        child: Text(
-          'Calcular',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18),
-              side: BorderSide(color: Colors.black),
+              side: const BorderSide(color: Colors.black),
             ),
+          ),
+        ),
+        child: const Text(
+          'Calcular',
+          style: TextStyle(
+            color: Colors.white,
           ),
         ),
       ),

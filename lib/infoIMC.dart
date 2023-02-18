@@ -1,12 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 
+// ignore: camel_case_types
 class infoIMC extends StatelessWidget {
-  infoIMC({
+  const infoIMC({
+    Key? key,
     required this.corResultado,
     required this.imc,
     required this.classificacao,
-  });
+  }) : super(key: key);
 
   final Color corResultado;
   final double imc;
@@ -28,10 +30,10 @@ class infoIMC extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '${imc.toStringAsFixed(2)}',
+            imc.toStringAsFixed(2),
             style: TextStyle(fontSize: 42, color: corResultado),
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Text(
             classificacao,
             style: TextStyle(fontSize: 20, color: corResultado),

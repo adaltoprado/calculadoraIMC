@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:calculadora_imc/alert_message.dart';
 import 'package:calculadora_imc/infoIMC.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import 'button_calcular.dart';
 
@@ -46,21 +46,21 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             imc == null
-                ? AlertMessage()
+                ? const AlertMessage()
                 : infoIMC(
                     corResultado: corResultado,
                     imc: imc!,
                     classificacao: classificacao,
                   ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
                   children: [
-                    Text('Seu peso'),
-                    SizedBox(height: 8),
-                    Container(
+                    const Text('Seu peso'),
+                    const SizedBox(height: 8),
+                    SizedBox(
                       width: 75,
                       child: TextField(
                         controller: pesoController,
@@ -77,12 +77,12 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                     ),
                   ],
                 ),
-                SizedBox(width: 22),
+                const SizedBox(width: 22),
                 Column(
                   children: [
-                    Text('Sua altura'),
-                    SizedBox(height: 8),
-                    Container(
+                    const Text('Sua altura'),
+                    const SizedBox(height: 8),
+                    SizedBox(
                       width: 75,
                       child: TextField(
                         controller: alturaController,
@@ -101,7 +101,7 @@ class _CalculadoraIMCState extends State<CalculadoraIMC> {
                 ),
               ],
             ),
-            SizedBox(height: 22),
+            const SizedBox(height: 22),
             ButtonCalcularIMC(
               onPressed: () {
                 try {

@@ -1,12 +1,11 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
 
 class AlertMessage extends StatelessWidget {
+  const AlertMessage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       'Adicione valores de peso e altura \n para calcular seu IMC',
       style: TextStyle(
         fontSize: 20,
